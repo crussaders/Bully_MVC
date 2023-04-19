@@ -1,6 +1,7 @@
 ﻿using Bully_MVC.Data;
 using Bully_MVC.Migrations;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bully_MVC.Controllers
 {
@@ -67,7 +68,46 @@ namespace Bully_MVC.Controllers
         [HttpPost]
         public IActionResult Edit(Models.Category obj)
         {
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View();
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            //Find the value from db based on id
+            Models.Category? category = _db.Categories.Find(id);
+            // Models.Category? category1 = _db.Categories.FirstOrDefault(c => c.Id == id);
+            //  Models.Category category2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault();
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePost(int? id)
+        {
+            Models.Category? category = _db.Categories.Find(id);
+            if(category == null)
+            {
+                return NotFound();
+            }
+            _db.Categories.Remove(category);
+            _db.SaveChanges();
+
+
+            return RedirectToAction("Index");
         }
 
     }
