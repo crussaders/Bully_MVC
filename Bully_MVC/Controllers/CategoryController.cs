@@ -27,14 +27,39 @@ namespace Bully_MVC.Controllers
         [HttpPost]
         public IActionResult Create(Models.Category obj)
         {
+            if(obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name. ");
+            }
+
+         // if (obj.Name.ToLower() == "test")
+         //    {
+          //      ModelState.AddModelError("name", "Invalid value ");
+         //   }
+
             if (ModelState.IsValid) {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
-
+                return RedirectToAction("Index");
             }
 
-            //return View();
-            return RedirectToAction("Index");
+            return View();
         }
+
+        public IActionResult Edit(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Models.Category obj)
+        {
+            return View();
+        }
+
     }
 }
