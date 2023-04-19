@@ -41,6 +41,7 @@ namespace Bully_MVC.Controllers
             if (ModelState.IsValid) {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category created Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -72,6 +73,7 @@ namespace Bully_MVC.Controllers
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category updated Successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -105,8 +107,7 @@ namespace Bully_MVC.Controllers
             }
             _db.Categories.Remove(category);
             _db.SaveChanges();
-
-
+            TempData["success"] = "Category deleted Successfully";
             return RedirectToAction("Index");
         }
 
