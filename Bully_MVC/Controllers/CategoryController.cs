@@ -52,7 +52,16 @@ namespace Bully_MVC.Controllers
             {
                 return NotFound();
             }
-            return View();
+            //Find the value from db based on id
+           Models.Category? category = _db.Categories.Find(id); 
+          // Models.Category? category1 = _db.Categories.FirstOrDefault(c => c.Id == id);
+          //  Models.Category category2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault();
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
         }
 
         [HttpPost]
