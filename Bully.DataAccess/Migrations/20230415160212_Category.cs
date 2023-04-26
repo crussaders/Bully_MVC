@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Bully_MVC.Migrations
+namespace Bully.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class Category : Migration

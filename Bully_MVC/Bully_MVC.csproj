@@ -16,4 +16,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bully.DataAccess\Bully.DataAccess.csproj" />
+    <ProjectReference Include="..\Bully.Models\Bully.Models.csproj" />
+    <ProjectReference Include="..\Bully.Utility\Bully.Utility.csproj" />
+  </ItemGroup>
+
 </Project>

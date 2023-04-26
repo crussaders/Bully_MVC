@@ -1,5 +1,5 @@
-﻿using Bully_MVC.Data;
-using Bully_MVC.Migrations;
+﻿using Bully.DataAccess.Data;
+using Bully.DataAccess.Migrations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +15,7 @@ namespace Bully_MVC.Controllers
         public IActionResult Index()
         {
            
-           List<Models.Category> objCategoryList = _db.Categories.ToList();
+           List<Bully.Models.Category> objCategoryList = _db.Categories.ToList();
            // _ = _db.Categories.ToList();
             return View(objCategoryList);
         }
@@ -26,7 +26,7 @@ namespace Bully_MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Models.Category obj)
+        public IActionResult Create(Bully.Models.Category obj)
         {
             if(obj.Name == obj.DisplayOrder.ToString())
             {
@@ -55,7 +55,7 @@ namespace Bully_MVC.Controllers
                 return NotFound();
             }
             //Find the value from db based on id
-           Models.Category? category = _db.Categories.Find(id); 
+            Bully.Models.Category? category = _db.Categories.Find(id); 
           // Models.Category? category1 = _db.Categories.FirstOrDefault(c => c.Id == id);
           //  Models.Category category2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault();
 
@@ -67,7 +67,7 @@ namespace Bully_MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Models.Category obj)
+        public IActionResult Edit(Bully.Models.Category obj)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Bully_MVC.Controllers
                 return NotFound();
             }
             //Find the value from db based on id
-            Models.Category? category = _db.Categories.Find(id);
+            Bully.Models.Category? category = _db.Categories.Find(id);
             // Models.Category? category1 = _db.Categories.FirstOrDefault(c => c.Id == id);
             //  Models.Category category2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault();
 
@@ -100,7 +100,7 @@ namespace Bully_MVC.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Models.Category? category = _db.Categories.Find(id);
+            Bully.Models.Category? category = _db.Categories.Find(id);
             if(category == null)
             {
                 return NotFound();

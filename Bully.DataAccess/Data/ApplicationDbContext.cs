@@ -1,7 +1,7 @@
-﻿using Bully_MVC.Models;
+﻿using Bully.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bully_MVC.Data
+namespace Bully.DataAccess.Data
 {
     public class ApplicationDbContext: DbContext
     {

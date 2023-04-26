@@ -1,4 +1,4 @@
-using Bully_MVC.Data;
+using Bully.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 

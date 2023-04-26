@@ -1,4 +1,4 @@
-﻿using Bully_MVC.Models;
+﻿using Bully.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

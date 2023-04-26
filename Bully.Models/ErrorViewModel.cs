@@ -1,4 +1,4 @@
-namespace Bully_MVC.Models
+namespace Bully.Models
 {
     public class ErrorViewModel
     {
